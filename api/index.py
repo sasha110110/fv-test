@@ -30,8 +30,8 @@ def webhook_handler():
         content = json.loads(request.get_data())# #WORKING
 
         
-        print(content)
-        chat_id= msg.sender_chat["username"]
+        #print(content)
+        chat_id="@1093497662"# msg.sender_chat["username"]
         bot.sendMessage(chat_id=update.message.chat_id, text=str(content))
     return 'ok'
 
