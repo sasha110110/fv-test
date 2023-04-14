@@ -12,9 +12,9 @@ bot = telegram.Bot(token=TOKEN)
 
 app = Flask(__name__)
 
-@app.route('/')
-def home():
-    return 'Hello, World!'
+#@app.route('/')
+#def home():
+ #   return 'Hello, World!'
 
 @app.route('/test')
 def test():
@@ -24,8 +24,8 @@ def test():
     
 
 
-@app.route('/5858379831:AAGLpbVbx0TRGk5ctcch3dKvcOx4JrmBhuA', methods=['POST'])
-def webhook_handler():
+@app.route('/') #5858379831:AAGLpbVbx0TRGk5ctcch3dKvcOx4JrmBhuA', methods=['POST'])
+def index():
     global bot
    # global updater
     
