@@ -16,6 +16,14 @@ app = Flask(__name__)
 def home():
     return 'Hello, World!'
 
+@app.route('/test')
+def test():
+    chat_id="@1093497662"# msg.sender_chat["username"]
+  
+    bot.sendMessage(chat_id=chat_id, text="test")
+    
+
+
 @app.route('/5858379831:AAGLpbVbx0TRGk5ctcch3dKvcOx4JrmBhuA', methods=['POST'])
 def webhook_handler():
     global bot
