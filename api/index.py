@@ -16,13 +16,6 @@ def greet(update, context):
     context.bot.send_message(chat_id=chat_id, text="Hello there")
 
 
-
-
-HOST="https://fv-test.vercel.app"
-
-updater = Updater(token=TOKEN, use_context=True)
-#bot.deleteWebhook()
-
 app = Flask(__name__)
 
 @app.route('/')
@@ -30,18 +23,19 @@ def home():
     return 'Hello, World!'
 
 @app.route(f'/{TOKEN}', methods=['POST'])
-def webhook_handler():
+def webhook_handler(pdate, context):
    # global updater
     
-    if request.method == "POST":
-        global content #WORKING
-        content=request.json
+    ##if request.method == "POST":
+        #global content #WORKING
+        #content=request.json
         #content = json.loads(request.get_data())# #WORKING
        
-        chat_id = request.json["message"]["chat"]["id"]
+        #chat_id = request.json["message"]["chat"]["id"]
         print(content)
-        chat_id="1093497662"# msg.sender_chat["username"]
-        bot.sendMessage(chat_id=chat_id, text=str(content))
+    chat_id="1093497662"# msg.sender_chat["username"]
+    update = telegram.update.Update.de_json(request.get_json(force=True))
+    bot.sendMessage(chat_id=chat_id, text=str(update))
     return 'ok'
 
 
