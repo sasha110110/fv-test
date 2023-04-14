@@ -9,7 +9,20 @@ TOKEN = "5858379831:AAGLpbVbx0TRGk5ctcch3dKvcOx4JrmBhuA"
 HOST="https://fv-test.vercel.app"
 bot = telegram.Bot(token=TOKEN)
 updater = Updater(token=TOKEN, use_context=True)
-#bot.deleteWebhook()"
+dp = updater.dispatcher
+
+
+def greet(update, context):
+    chat_id = update.effective_chat.id
+    context.bot.send_message(chat_id=chat_id, text="Hello there")
+
+
+greet_handler=CommandHandler("start", greet)
+#query_handler=CallbackQueryHandler(first_choice)
+
+dp.add_handler(greet_handler)
+#dp.add_handler(query_handler, group=1)
+
 HOST="https://fv-test.vercel.app"
 
 updater = Updater(token=TOKEN, use_context=True)
@@ -27,12 +40,13 @@ def webhook_handler():
     
     if request.method == "POST":
         global content #WORKING
+        #content=request.json
         content = json.loads(request.get_data())# #WORKING
 
         
-        #print(content)
+        print(content)
         chat_id="@1093497662"# msg.sender_chat["username"]
-        bot.sendMessage(chat_id=update.message.chat_id, text=str(content))
+        bot.sendMessage(chat_id=chat_id, text=str(content))
     return 'ok'
 
 
