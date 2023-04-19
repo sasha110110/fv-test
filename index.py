@@ -31,4 +31,4 @@ dp.add_handler(greet_handler)
 updater.start_webhook(listen="0.0.0.0",
                        port=443,
                        url_path=TOKEN, 
-                      webhook_url='https://test-with-hook.vercel.app/' + TOKEN))
+                      webhook_url='https://fashion-ivory.vercel.app/' + TOKEN))
